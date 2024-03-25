@@ -1,0 +1,130 @@
+---
+title: build you own virtual machine
+description: this is a description this is a description this is a description pthis is a description this is a description
+date: 2024-04-04
+published: true
+tags:
+    - webdev
+    - testing
+    - devops
+---
+
+# Welcome
+
+weclome to my blog
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas vel commodo lacus, et dictum ante. Cras vel lorem sem. Phasellus pharetra luctus leo. Donec pellentesque volutpat nunc quis congue. Quisque eu nibh facilisis sapien mollis iaculis vitae eget dui. Nam id commodo nisi. Maecenas blandit arcu eget diam tristique, id ornare felis molestie. Nulla quis justo erat. Vivamus eu mi eu sem laoreet accumsan eget in leo. Nam non sollicitudin sem. Nam eleifend augue eu nulla sodales, ut sollicitudin urna convallis.
+
+## Javascript
+
+```js
+console.log("Hello World");
+```
+
+Nam facilisis ipsum nec eros iaculis, id tempus ex laoreet. Maecenas ullamcorper magna turpis. Vivamus vulputate placerat lacus, sit amet pulvinar enim posuere ut. Aenean pretium fermentum dolor. Nam sed ex quis lacus condimentum efficitur et non enim. Nam porttitor dolor in eros porttitor efficitur. Sed id imperdiet tortor, et efficitur elit.
+
+
+## Golang
+```go
+package main
+
+import fmt
+
+func main() {
+    fmt.Println("Hello World");
+}
+```
+
+Nam volutpat dictum tellus. Curabitur lacinia diam ut mauris fringilla bibendum. Nam ultrices, lorem sed dapibus iaculis, odio ante volutpat tortor, ac volutpat ante leo non urna. Nam efficitur at magna eget iaculis. Etiam vitae eros ultricies, elementum velit quis, interdum risus. Quisque tempus, diam id mollis tempus, urna libero scelerisque leo, ac tempor enim lorem sed ante. Integer vitae enim posuere, sollicitudin mauris ac, ultricies odio. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum lacinia ultrices tortor, ut dictum dolor. Phasellus ac facilisis libero.
+
+## Rust
+```rust
+use core::panic;
+use std::{cmp::max, fmt::Display};
+
+pub trait Writer {
+    fn write(&self) -> String {
+        panic!("wtf bro")
+    }
+}
+
+pub trait Reader {
+    fn read(&self, s: &str);
+}
+struct Person {
+    name: String,
+    age: u32,
+}
+
+impl Writer for Person {
+    fn write(&self) -> String {
+        format!("{} {}", self.name, self.age)
+    }
+}
+
+impl Reader for Person {
+    fn read(&self, s: &str) {
+        println!("{s}");
+    }
+}
+
+// fn takes_writer(w: &impl Writer) {
+//     println!("{}", w.write());
+// }
+
+fn takes_writer<T>(w: &T)
+where
+    T: Reader + Writer,
+{
+    w.read(&w.write());
+}
+fn largest<T: Ord + Clone>(v: &[T]) -> Option<T> {
+    let mut largest: &T;
+    if v.len() == 0 {
+        return None;
+    }
+    largest = &v[0];
+    for val in v {
+        largest = max(largest, val);
+    }
+    Some(largest.clone())
+}
+
+impl Display for Person {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        write!(f, "name: {} age: {}", self.name, self.age)
+    }
+}
+
+fn main() {
+    let v = vec![2, 1, 3, 0, 5];
+    println!("{}", largest(&v).unwrap());
+    let p = Person {
+        name: String::from("houssam"),
+        age: 23,
+    };
+    takes_writer(&p);
+    println!("hello world");
+    println!("{}", &p);
+}
+```
+Suspendisse sem elit, sagittis ut imperdiet id, fermentum vitae dolor. Pellentesque id ante at risus interdum ultrices eget eget urna. Sed sagittis felis sit amet nunc pretium, eget luctus nisi molestie. Proin nec orci pretium, laoreet sem at, pharetra turpis. Duis eleifend dictum dui, et auctor nunc bibendum quis. Quisque luctus nisl eu augue bibendum, sit amet lacinia risus porttitor. Nulla metus nibh, pharetra in sem ac, auctor sodales justo. Integer viverra rutrum arcu in tincidunt.
+
+## Autolink literals
+
+www.example.com, https://example.com, and contact@example.com.
+
+## Footnote
+
+A note[^1]
+
+[^1]: Big note.
+
+## Strikethrough
+
+~one~ or ~~two~~ tildes.
+
+## Tasklist
+
+* [ ] to do
+* [x] don
